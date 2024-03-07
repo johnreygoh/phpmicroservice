@@ -1,0 +1,14 @@
+Building Microservices with PHP
+
+Training Requirements:
+1. Download and Install Xampp (with PHP8+)
+https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe
+
+2. Download and Install Composer
+https://getcomposer.org/
+
+3. Download and Install Postman
+https://www.postman.com/downloads/
+
+4. Download and Install VSCode
+https://code.visualstudio.com/Download

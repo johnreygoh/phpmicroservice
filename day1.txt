@@ -1,0 +1,191 @@
+microservices and api (laravel/lumen)
+
+db<--->microservice<---->api<----->front-end(react.js)
+------------------------------------------------------
+
+php version: min 8.0.2
+xampp
+sqlite?mysql?
+vscode
+php linter?
+
+mysql<-------- mysql prompt | phpmyadmin | mysql workbench | navicat
+
+-table(prepared)
+-app->build table->additional fields (timestamps)
+
+
+-------------------------------------
+
+1. PHP MVC laravel
+
+Model-View-Controller
+
+db<--->Model Class(ORM-Eloquent) Object-Relational Mapping
+	<--->Controller Class (Navigate by router calls and provide action)
+	<--->Router (url destination for each request)
+	<--->Views (display for users-HTTP,BLADE,CSS,JS)
+
+Activity: Blog CRUD MVC (mysql)
+http://localhost/myblog/public/
+1. setup database connection
+.env
+
+2. make model class and migrate
+php artisan make:model Post
+php artisan make:migration Migration1
+php artisan migrate
+
+3. add fillable/hidden properties to model class
+4. create controller
+
+db<---->Model Class<--->Controller<---->View
+			   |
+			   V
+			routes
+			   ^
+			   |
+			users	
+
+
+php artisan make:controller PostController --resource
+
+5. views
+./resources/views/posts/
+
+csrf cross-site request forgery
+
+------------------------------------------------------
+http://localhost/myblog/public/posts/		<--- index
+http://localhost/myblog/public/posts/create	<--- create
+http://localhost/myblog/public/posts/1		<--- show (GET)
+http://localhost/myblog/public/posts/1/edit	<--- edit (GET)
+http://localhost/myblog/public/posts/1/destroy
+destroy
+
+----------------------------------------------------------------------
+
+db2<----------------web app
+	<----------mobile app
+	<----------desktop app
+
+db----model---controller----API<----------------views(internal)
+				<----------------mobile app
+				<----------------external web app
+				<----------------outside laravel
+
+
+microservices and api
+
+-----------------------------------------------
+arch1
+db-----reg1(API/MS)-----|
+|
+db-----reg2(API/MS)-----|
+|
+db-----reg3(API/MS)-----|
+|
+db-----reg4(API/MS)-----|
+|
+db-----central(API/MS)--|
+
+
+
+arch2
+|----reg1(API/MS)-----|
+|
+|-----reg2(API/MS)-----|
+|
+db-----central(API/MS)-----|
+|
+|-----reg4(API/MS)-----|
+|
+|-----reg3(API/MS)--|
+
+
+arch1
+db-----reg1(API/MS)-----|
+		|
+db-----reg2(API/MS)-----|
+		|
+db-----central(API/MS)request to fetch and "add"
+
+----------------------------------------------------------------
+
+portability:
+xampp ---> built-in lumen php server 
+mysql ---> sqlite
+
+
+task 1: Authors Database and Microservice
+task 2: Books Database and Microservice
+task 3: API gateway
+task 4: SSO and OAuth
+task 5: Headless Arch.
+
+
+--prefer-dist	:	"most stable version for production"
+			current 11, stable 8.9
+
+--prefer-source :	(default)current version, source code
+
+
+run dev server:
+php -S localhost:8000 -t .\public
+------------------------------------------------------------------
+
+task 1: Authors Database and Microservice
+
+1. enable Facade and Eloquent
+./bootstrap/app.php
+
+2. setup database
+.env
+
+*if using sqlite, create ./database/database.sqlite
+
+3. set .env APP_KEY
+4. set .gitignore
+5. make database migration
+6. run migrate
+7. db browse sqlite
+8. create a model class and set fillable properties
+9. using factory and seeding to generate records
+
+factory description of the values
+seeder populates table based on factory
+
+php artisan db:seed
+
+db-----model-----?
+
+10. make controller structure
+11. make routes
+
+db-----model----controller
+		|
+		routes(API Endpoints)<-----------------apps(other API, front-end)
+
+
+12. Normalize responses
+success and error response
+
+"Traits"|"responder"
+./app/Traits/ApiResponder.php
+
+use the trait in the controller
+
+13. add controller functions
+
+*store
+POST
+body->form-data
+
+*update
+PUT
+body->x-www-form-urlencoded
+
+
+
+
+

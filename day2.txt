@@ -1,0 +1,80 @@
+task 1: Authors Database and Microservice
+task 2: Books Database and Microservice
+task 3: API gateway
+task 4: SSO and OAuth
+task 5: Headless Arch
+----------------------------------------------------------------------
+task 1:
+1. enable Facade and Eloquent
+2. setup database
+3. set .env APP_KEY
+4. set .gitignore
+5. make database migration
+6. run migrate
+7. db browse sqlite
+8. create a model class and set fillable properties
+9. using factory and seeding to generate records
+10. make controller structure
+11. make routes
+12. Normalize responses
+13. add controller functions
+14. handle more errors
+
+task 2: Books Database and Microservice
+1. enable Facade and Eloquent
+2. setup database
+3. set .env APP_KEY
+4. set .gitignore
+5. make database migration
+php artisan make:migration CreateBooksTable --create=books
+
+6. run migrate
+php artisan migrate
+
+7. db browse sqlite
+8. create a model class and set fillable properties
+9. using factory and seeding to generate records
+10. make controller structure
+11. make routes
+12. Normalize responses
+13. add controller functions
+14. handle more errors
+
+
+task 3: API gateway
+1. enable Facade and Eloquent
+2. setup database
+3. set .env APP_KEY
+4. set .gitignore
+5. create the controllers for the Microservices
+6. standard responses
+7. install guzzle
+8. services
+a.create file
+./config/services.php
+
+b.configure bootstrap/app.php
+
+9. create a trait that consumes other (external) microservice
+./app/Traits/ConsumesExternalService.php
+
+10. add components to services.php (base_uri)
+11. create the service files for Authors and Books
+
+./app/Services/AuthorService.php
+
+./app/Services/BookService.php
+
+
+
+
+
+
+
+
+
+
+
+
+
+
